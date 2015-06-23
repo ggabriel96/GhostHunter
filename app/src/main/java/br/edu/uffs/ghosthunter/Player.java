@@ -1,4 +1,4 @@
-package br.edu.uffs.ggabriel96.arrow;
+package br.edu.uffs.ghosthunter;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;

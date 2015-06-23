@@ -1,4 +1,4 @@
-package br.edu.uffs.ggabriel96.arrow;
+package br.edu.uffs.ghosthunter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,11 +17,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread mainThread;
     private Background background;
     private Player player;
-    private ArrayList<Smoke> smoke;
-    private ArrayList<Spell> spells;
+    private ArrayList<Ghost> ghosts;
     private long spellsStartTime;
     private Random random = new Random();
-//    public static final int MOVESPEED = -5; // for scrolling the background...
 
     public GamePanel(Context context) {
         super(context);
@@ -62,22 +60,21 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Bitmap tmpBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
-        int newX = tmpBitmap.getWidth() * this.getWidth() / tmpBitmap.getWidth();
-        int newY = tmpBitmap.getHeight() * this.getHeight() / tmpBitmap.getHeight();
-        this.background = new Background(Bitmap.createScaledBitmap(tmpBitmap, newX, newY, true));
 
-        tmpBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.weapon);
-        newX = tmpBitmap.getWidth() * this.getWidth() / tmpBitmap.getWidth() / 18;
-        newY = tmpBitmap.getHeight() * this.getHeight() / tmpBitmap.getHeight() / 4;
+        this.background = new Background(Bitmap.createScaledBitmap(tmpBitmap, this.getWidth(), this.getHeight(), true));
+
+        tmpBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wand);
+        int newX = tmpBitmap.getWidth() * this.getWidth() / tmpBitmap.getWidth() / 8;
+        int newY = tmpBitmap.getHeight() * this.getHeight() / tmpBitmap.getHeight() / 10;
         this.player = new Player(Bitmap.createScaledBitmap(tmpBitmap, newX, newY, true), (this.getWidth() / 12), (this.getHeight() / 2), 0, 0);
 
-        this.smoke = new ArrayList<>();
-
-        this.spells = new ArrayList<>();
+        this.ghosts = new ArrayList<>();
         spellsStartTime = System.nanoTime();
 
         this.mainThread.setRunning(true);
         this.mainThread.start();
+
+        tmpBitmap = null;
     }
 
     @Override
@@ -96,33 +93,30 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
         if (spellsElapsedTime > (2_000 - player.getScore() / 4)) {
 
-            if (this.spells.size() == 0) {
+            if (this.ghosts.size() == 0) {
                 // get his missiles
-                spells.add(new Spell(BitmapFactory.decodeResource(getResources(), R.drawable.missile), this.getWidth() + 10, this.getHeight() / 2, 45, 15, player.getScore(), 13));
+                ghosts.add(new Ghost(BitmapFactory.decodeResource(getResources(), R.drawable.char_phantom), this.getWidth() + 10, this.getHeight() / 2, 45, 15, player.getScore()));
             }
             else {
-                spells.add(new Spell(BitmapFactory.decodeResource(getResources(), R.drawable.missile), this.getWidth() + 10, (int) (random.nextDouble() * this.getHeight()), 45, 15, player.getScore(), 13));
+                ghosts.add(new Ghost(BitmapFactory.decodeResource(getResources(), R.drawable.char_phantom), this.getWidth() + 10, (int) (random.nextDouble() * this.getHeight()), 45, 15, player.getScore()));
             }
 
             this.spellsStartTime = System.nanoTime();
         }
 
-        for (int i = 0; i < spells.size(); i++) {
-            spells.get(i).update();
+        for (int i = 0; i < ghosts.size(); i++) {
+            ghosts.get(i).update();
 
-            if (this.collision(spells.get(i), this.player)) {
-                spells.remove(i);
+            if (this.collision(ghosts.get(i), this.player)) {
+                ghosts.remove(i);
                 player.setPlaying(false);
                 break;
             }
 
-            if (spells.get(i).getX() < -100) {
-                spells.remove(i);
+            if (ghosts.get(i).getX() < -100) {
+                ghosts.remove(i);
             }
         }
-//        if (player.isPlaying()) {
-//            this.background.update();
-//        }
     }
 
     public boolean collision(GameObject a, GameObject b) {
@@ -134,8 +128,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         this.background.draw(canvas);
         this.player.draw(canvas);
 
-        for (Spell spell: this.spells) {
-            spell.draw(canvas);
+        for (Ghost ghost : this.ghosts) {
+            ghost.draw(canvas);
         }
     }
 }

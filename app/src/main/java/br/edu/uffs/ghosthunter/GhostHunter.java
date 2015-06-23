@@ -1,4 +1,4 @@
-package br.edu.uffs.ggabriel96.arrow;
+package br.edu.uffs.ghosthunter;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ public class GhostHunter extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_arrow, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
