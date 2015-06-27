@@ -9,7 +9,7 @@ public class Player extends GameObject {
     private int score;
     private boolean playing;
 
-    public Player(Bitmap image, int x, int y, int dx, int dy) {
+    public Player(Bitmap image, int x, int y) {
         this.image = image;
         this.width = image.getWidth();
         this.height = image.getHeight();
@@ -22,30 +22,24 @@ public class Player extends GameObject {
         this.position = new Matrix();
         this.position.postTranslate(this.x, this.y);
 
-        this.dx = dx;
-        this.dy = dy;
         this.score = 0;
         this.playing = false;
     }
 
-    public int getScore() {
-        return this.score;
-    }
+    public int getScore() { return this.score; }
 
-    public void resetScore() {
-        this.score = 0;
-    }
+    public void resetScore() { this.score = 0; }
+
+    public void hit() { this.score++; }
 
     public void setPlaying(boolean playing) {
         this.playing = playing;
     }
 
-    public boolean isPlaying() {
-        return this.playing;
-    }
+    public boolean isPlaying() { return this.playing; }
 
     public void update(@NonNull MotionEvent event) {
-        // calculating vectors from bow to touch
+        // calculating vectors from weapon to touch
         double tx = event.getAxisValue(MotionEvent.AXIS_X) - this.centerX;
         double ty = event.getAxisValue(MotionEvent.AXIS_Y) - this.centerY;
 

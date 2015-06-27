@@ -35,10 +35,10 @@ public class MainThread extends Thread {
             // try locking the canvas for pixel editing ?
             try {
                 MainThread.canvas = this.surfaceHolder.lockCanvas();
-//                synchronized (this.surfaceHolder) {
+                synchronized (this.surfaceHolder) {
                     this.gamePanel.update();
                     this.gamePanel.draw(MainThread.canvas);
-//                }
+                }
             }
             catch (Exception e) {
                 // ?

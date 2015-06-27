@@ -23,15 +23,12 @@ public class Ghost extends GameObject {
 
     public void update() {
         this.x -= this.speed;
+//        this.position.postTranslate(this.x, this.y);
     }
 
+    @Override
     public void draw(Canvas canvas) {
-        try {
-            canvas.drawBitmap(this.image, this.x, this.y, null);
-        }
-        catch(Exception e) {
-            // ?
-        }
+        canvas.drawBitmap(this.image, this.x, this.y, null);
     }
 
     @Override
