@@ -3,6 +3,15 @@ package br.edu.uffs.ghosthunter;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
+/*******************************************************************************
+Name:MainThread.java
+Authors: Gabriel Batista Galli - g7.galli96@gmail.com
+         Vladimir Belinski - vlbelinski@gmail.com
+
+Description: Class MainThread of GameHunter, a 2D game. Responsible for the
+            main thread of the game.
+*******************************************************************************/
+
 public class MainThread extends Thread {
     private static final int FPS_CAP = 60;
     private double avgFps;

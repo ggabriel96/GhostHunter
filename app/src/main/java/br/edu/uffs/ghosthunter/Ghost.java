@@ -2,8 +2,16 @@ package br.edu.uffs.ghosthunter;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-
 import java.util.Random;
+
+/*******************************************************************************
+Name:Ghost.java
+Authors: Gabriel Batista Galli - g7.galli96@gmail.com
+         Vladimir Belinski - vlbelinski@gmail.com
+
+Description: Class Ghost of GameHunter, a 2D game. This class is responsible
+            for the features of the character ghost in the game.
+*******************************************************************************/
 
 public class Ghost extends GameObject {
     private int speed;

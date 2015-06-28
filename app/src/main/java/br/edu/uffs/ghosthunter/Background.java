@@ -3,6 +3,14 @@ package br.edu.uffs.ghosthunter;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+/*******************************************************************************
+Name:Background.java
+Authors: Gabriel Batista Galli - g7.galli96@gmail.com
+         Vladimir Belinski - vlbelinski@gmail.com
+
+Description: Class Background of GameHunter, a 2D game.
+*******************************************************************************/
+
 public class Background {
     private Bitmap image;
     private int x, y;

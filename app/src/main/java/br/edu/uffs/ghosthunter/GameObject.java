@@ -5,6 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 
+/*******************************************************************************
+Name:GameObject.java
+Authors: Gabriel Batista Galli - g7.galli96@gmail.com
+         Vladimir Belinski - vlbelinski@gmail.com
+
+Description: Class GameObject of GameHunter, a 2D game.
+*******************************************************************************/
+
 public abstract class GameObject {
     Matrix position;
     protected Bitmap image;

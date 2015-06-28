@@ -4,6 +4,15 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 
+/*******************************************************************************
+Name:Spell.java
+Authors: Gabriel Batista Galli - g7.galli96@gmail.com
+         Vladimir Belinski - vlbelinski@gmail.com
+
+Description: Class Spell of GameHunter, a 2D game. This class is responsible
+            for the spells used in the game.
+*******************************************************************************/
+
 public class Spell extends GameObject {
     private double speed, speedX, speedY, speedMultiplier;
 

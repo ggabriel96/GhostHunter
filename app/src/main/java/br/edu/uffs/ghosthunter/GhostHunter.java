@@ -7,6 +7,13 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
+/*******************************************************************************
+Name:GhostHunter.java
+Authors: Gabriel Batista Galli - g7.galli96@gmail.com
+         Vladimir Belinski - vlbelinski@gmail.com
+
+Description: Class GhostHunter of GameHunter, a 2D game.
+*******************************************************************************/
 
 public class GhostHunter extends Activity {
 

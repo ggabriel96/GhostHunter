@@ -5,6 +5,15 @@ import android.graphics.Matrix;
 import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 
+/*******************************************************************************
+Name:Player.java
+Authors: Gabriel Batista Galli - g7.galli96@gmail.com
+         Vladimir Belinski - vlbelinski@gmail.com
+
+Description: Class Player of GameHunter, a 2D game. This class is responsible
+            for the features of a player into the game.
+*******************************************************************************/
+
 public class Player extends GameObject {
     private int score;
     private boolean playing;

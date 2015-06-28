@@ -13,6 +13,15 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.Random;
 
+/*******************************************************************************
+Name:GamePanel.java
+Authors: Gabriel Batista Galli - g7.galli96@gmail.com
+         Vladimir Belinski - vlbelinski@gmail.com
+
+Description: Class GamePanel of GameHunter, a 2D game.
+*******************************************************************************/
+
+
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread mainThread;
     private Background background;
