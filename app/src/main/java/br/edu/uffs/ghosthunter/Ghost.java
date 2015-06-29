@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import java.util.Random;
 
 /*******************************************************************************
-Name:Ghost.java
+Name: Ghost.java
 Authors: Gabriel Batista Galli - g7.galli96@gmail.com
          Vladimir Belinski - vlbelinski@gmail.com
 
@@ -25,22 +25,16 @@ public class Ghost extends GameObject {
         this.width = width;
         this.height = height;
 
-        this.speed = 7 + (int) (random.nextDouble() * score / 30);
-        if (this.speed > 40) this.speed = 40;
+        this.speed = 10 + score / 5;
+        if (this.speed > 50) this.speed = 50;
     }
 
     public void update() {
         this.x -= this.speed;
-//        this.position.postTranslate(this.x, this.y);
     }
 
     @Override
     public void draw(Canvas canvas) {
         canvas.drawBitmap(this.image, this.x, this.y, null);
-    }
-
-    @Override
-    public int getWidth() {
-        return this.width - 10; // more realistic collision?
     }
 }

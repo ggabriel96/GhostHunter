@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 
 /*******************************************************************************
-Name:Spell.java
+Name: Spell.java
 Authors: Gabriel Batista Galli - g7.galli96@gmail.com
          Vladimir Belinski - vlbelinski@gmail.com
 
@@ -56,6 +56,5 @@ public class Spell extends GameObject {
 
         this.x += (this.speedX / this.speed) * this.speedMultiplier;
         this.y += (this.speedY / this.speed) * this.speedMultiplier;
-//        this.position.postTranslate(this.x, this.y);
     }
 }

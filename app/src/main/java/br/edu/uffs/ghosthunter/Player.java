@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 
 /*******************************************************************************
-Name:Player.java
+Name: Player.java
 Authors: Gabriel Batista Galli - g7.galli96@gmail.com
          Vladimir Belinski - vlbelinski@gmail.com
 
@@ -15,8 +15,8 @@ Description: Class Player of GameHunter, a 2D game. This class is responsible
 *******************************************************************************/
 
 public class Player extends GameObject {
-    private int score;
     private boolean playing;
+    private int score, lives;
 
     public Player(Bitmap image, int x, int y) {
         this.image = image;
@@ -32,14 +32,28 @@ public class Player extends GameObject {
         this.position.postTranslate(this.x, this.y);
 
         this.score = 0;
+        this.lives = 3;
         this.playing = false;
     }
 
     public int getScore() { return this.score; }
 
+    public int getLives() { return this.lives; }
+
+    public void reset() {
+        this.resetScore();
+        this.resetLives();
+        this.position = new Matrix();
+        this.position.postTranslate(this.x, this.y);
+    }
+
     public void resetScore() { this.score = 0; }
 
+    public void resetLives() { this.lives = 3; }
+
     public void hit() { this.score++; }
+
+    public void miss() { this.lives--; }
 
     public void setPlaying(boolean playing) {
         this.playing = playing;
@@ -53,6 +67,6 @@ public class Player extends GameObject {
         double ty = event.getAxisValue(MotionEvent.AXIS_Y) - this.centerY;
 
         float angle = (float)Math.toDegrees(Math.atan2(ty, tx));
-        this.rotateImage(angle);
+        this.position.set(this.rotateImage(angle));
     }
 }

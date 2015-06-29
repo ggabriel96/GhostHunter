@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 /*******************************************************************************
-Name:MainThread.java
+Name: MainThread.java
 Authors: Gabriel Batista Galli - g7.galli96@gmail.com
          Vladimir Belinski - vlbelinski@gmail.com
 
@@ -13,12 +13,12 @@ Description: Class MainThread of GameHunter, a 2D game. Responsible for the
 *******************************************************************************/
 
 public class MainThread extends Thread {
-    private static final int FPS_CAP = 60;
     private double avgFps;
-    private SurfaceHolder surfaceHolder;
-    private GamePanel gamePanel;
     private boolean running;
-    public static Canvas canvas; // static?
+    private GamePanel gamePanel;
+    public static Canvas canvas;
+    private SurfaceHolder surfaceHolder;
+    private static final int FPS_CAP = 60;
 
     public MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel) {
         super();
@@ -41,12 +41,13 @@ public class MainThread extends Thread {
             startTime = System.nanoTime();
             MainThread.canvas = null;
 
-            // try locking the canvas for pixel editing ?
+            // try locking the canvas for pixel editing (?)
             try {
                 MainThread.canvas = this.surfaceHolder.lockCanvas();
                 synchronized (this.surfaceHolder) {
                     this.gamePanel.update();
                     this.gamePanel.draw(MainThread.canvas);
+                    this.gamePanel.checkCollision();
                 }
             }
             catch (Exception e) {
@@ -73,7 +74,7 @@ public class MainThread extends Thread {
                 // ?
             }
 
-            totalTime += System.nanoTime() - startTime; // millisTime?
+            totalTime += System.nanoTime() - startTime;
             frameCount++;
 
             if (frameCount == MainThread.FPS_CAP) {

@@ -8,7 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /*******************************************************************************
-Name:GhostHunter.java
+Name: GhostHunter.java
 Authors: Gabriel Batista Galli - g7.galli96@gmail.com
          Vladimir Belinski - vlbelinski@gmail.com
 

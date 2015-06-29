@@ -47,11 +47,11 @@ public abstract class GameObject {
         return new Rect(this.x, this.y, this.x + this.getWidth(), this.y + this.getHeight());
     }
 
-    public void rotateImage(float angle) {
+    public Matrix rotateImage(float angle) {
         Matrix newPosition = new Matrix();
         newPosition.postRotate(angle, this.width / 2, this.height / 2);
         newPosition.postTranslate(this.x, this.y);
-        this.position.set(newPosition);
+        return newPosition;
     }
 
     public void draw(Canvas canvas) {
