@@ -25,7 +25,7 @@ public class Ghost extends GameObject {
         this.width = width;
         this.height = height;
 
-        this.speed = 10 + score / 5;
+        this.speed = 10 + score / 3;
         if (this.speed > 50) this.speed = 50;
     }
 

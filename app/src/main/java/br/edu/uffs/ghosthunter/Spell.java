@@ -16,7 +16,7 @@ Description: Class Spell of GameHunter, a 2D game. This class is responsible
 public class Spell extends GameObject {
     private double speed, speedX, speedY, speedMultiplier;
 
-    public Spell(Bitmap image, int x, int y) {
+    public Spell(Bitmap image, int x, int y, int score) {
         this.image = image;
         this.width = image.getWidth();
         this.height = image.getHeight();
@@ -27,7 +27,7 @@ public class Spell extends GameObject {
         this.y = y - (this.height / 2);
 
         this.speed = 0;
-        this.speedMultiplier = 10;
+        this.speedMultiplier = 10 + score / 5;
 
         this.position = new Matrix();
         this.position.postTranslate(this.x, this.y);

@@ -168,7 +168,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                 Spell s = new Spell(
                         this.spellBitmap,
                         (int)(this.player.getCenterX() + this.player.getWidth() / 2),
-                        (int)(this.player.getCenterY())
+                        (int)(this.player.getCenterY()),
+                        this.player.getScore()
                 );
 
                 // calculating vectors from weapon to touch
@@ -191,7 +192,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private void checkAndAddGhost() {
         long ghostsElapsedTime = (System.nanoTime() - this.ghostsStartTime) / 1_000_000;
 
-        if (ghostsElapsedTime > (3_500 - player.getScore() * 10)) {
+        if (ghostsElapsedTime > (3_500 - player.getScore() * 50)) {
 
             ghosts.add(new Ghost(this.ghostBitmap, this.getWidth(), (int) (random.nextDouble() * this.getHeight() % (this.getHeight() - 256)), this.ghostWidth, this.ghostHeight, player.getScore()));
 
